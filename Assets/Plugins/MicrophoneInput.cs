@@ -7,13 +7,23 @@ public class MicrophoneInput : MonoBehaviour
     public float sensitivity = 100;
     public float loudness = 0;
 
+	AudioSource _audio;
+	AudioSource audio{
+		get{
+			if (_audio == null){
+				_audio = gameObject.AddComponent<AudioSource>();
+			}
+			return _audio;
+		}
+	}
+	
     void Start()
     {
         audio.clip = Microphone.Start(null, true, 10, 44100);
-        audio.loop = true; // Set the AudioClip to loop
-        audio.mute = true; // Mute the sound, we don't want the player to hear it
-        while (!(Microphone.GetPosition(AudioInputDevice) > 0)) { } // Wait until the recording has started
-        audio.Play(); // Play the audio source!
+        audio.loop = true;
+        audio.mute = true;
+        while (!(Microphone.GetPosition(null) > 0)) { }
+        audio.Play();
     }
 
     void Update()
