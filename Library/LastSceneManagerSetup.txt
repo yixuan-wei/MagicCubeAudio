@@ -1,0 +1,4 @@
+sceneSetups:
+- path: C:/Users/VivienWei/Downloads/MicroPhoneInput/MicroPhoneInput/Assets/test.unity
+  isLoaded: 1
+  isActive: 1
