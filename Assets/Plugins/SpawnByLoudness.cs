@@ -12,14 +12,15 @@ public class SpawnByLoudness : MonoBehaviour
     {
         if (objectToSpawn == null)
             Debug.LogError("You need to set a prefab to Object To Spawn -parameter in the editor!");
-        if (audioInputObject == null)
-            audioInputObject = GameObject.Find("Cube");
+        //if (audioInputObject == null)
+          //  audioInputObject = objectToSpawn;
         micIn = (MicrophoneInput)audioInputObject.GetComponent("MicrophoneInput");
     }
 
     void Update()
     {
         float l = micIn.loudness;
+
 		Debug.Log(l);
         if (l > 0.2)
         {
