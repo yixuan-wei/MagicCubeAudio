@@ -7,34 +7,22 @@ public class MicrophoneInput : MonoBehaviour
     public float sensitivity = 100;
     public float loudness = 0;
 
-	AudioSource _audio;
-	AudioSource audio{
-		get{
-			if (_audio == null){
-				_audio = gameObject.AddComponent<AudioSource>();
-			}
-			return _audio;
-		}
-	}
+	AudioSource audio;
 	
     void Start()
     {
+        audio = GetComponent<AudioSource>();
         audio.clip = Microphone.Start(null, true, 10, 44100);
         audio.loop = true;
-        audio.mute = true;
         while (!(Microphone.GetPosition(null) > 0)) { }
+        audio.mute = false;
         audio.Play();
-    }
-
-    void Update()
-    {
-        loudness = GetAveragedVolume() * sensitivity;
     }
 
     float GetAveragedVolume()
     {
         float[] data = new float[256];
-        float a = 0;
+        float a = 0f;
         audio.GetOutputData(data, 0);
         foreach (float s in data)
         {
@@ -42,4 +30,11 @@ public class MicrophoneInput : MonoBehaviour
         }
         return a / 256;
     }
+
+    void Update()
+    {
+        loudness = GetAveragedVolume() * sensitivity;
+    }
+
+    
 }

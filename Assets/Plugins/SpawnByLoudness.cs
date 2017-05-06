@@ -20,13 +20,13 @@ public class SpawnByLoudness : MonoBehaviour
     void Update()
     {
         float l = micIn.loudness;
-
 		Debug.Log(l);
         if (l > 0.2)
         {
-            Vector3 scale = new Vector3(l, l, l);
-            GameObject newObject = (GameObject)Instantiate(objectToSpawn, this.transform.position, Quaternion.identity);
-            newObject.transform.localScale += scale;
+            //Vector3 scale = new Vector3(l, l, l);
+            //GameObject newObject = (GameObject)Instantiate(objectToSpawn, this.transform.position, Quaternion.identity);
+            //newObject.transform.localScale += scale;
+            Debug.Log("Requirments Hit");
         }
     }
 }
