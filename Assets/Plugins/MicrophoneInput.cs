@@ -7,7 +7,7 @@ public class MicrophoneInput : MonoBehaviour
     public float sensitivity = 100;
     public float loudness = 0;
 
-	AudioSource audio;
+	public AudioSource audio;
 	
     void Start()
     {
